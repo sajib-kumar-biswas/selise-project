@@ -1,0 +1,47 @@
+.topbarContainer {
+    display: flex;
+    margin: 10px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.rightContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+
+    background-color: white;
+    padding: 5px;
+}
+
+/* .searchIcon {
+
+}
+
+.filterIcon {
+
+} */
+
+
+.searchField {
+    border: none;
+    outline: none;
+}
+
+.moveTable {
+    width: 100%;
+    margin: 10px;
+}
+
+table {
+  width: 100%;
+}
+a{
+    text-decoration: none;
+}

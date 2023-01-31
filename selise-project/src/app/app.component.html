@@ -1,0 +1,11 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="sideContainer" mode="side" opened>
+        <a routerLink="/users-table">
+        <button class="sideBtn" mat-flat-button color="warn"><mat-icon>supervisor_account</mat-icon>Users</button></a>
+    </mat-drawer>
+    <mat-drawer-content>
+
+        
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
