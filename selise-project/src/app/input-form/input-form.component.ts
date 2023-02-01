@@ -41,7 +41,7 @@ export class InputFormComponent implements OnInit {
 
     phone: [this.initUser.phone, [Validators.required,Validators.pattern(/01[^012][0-9]{8}/)]],
 
-    email: [this.initUser.email, [Validators.required]]
+    email: [this.initUser.email, [Validators.required,Validators.pattern(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,8}/)]]
   })
 
   constructor(private userService: UsersService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) { }
@@ -65,7 +65,7 @@ export class InputFormComponent implements OnInit {
 
         phone: [this.initUser.phone, [Validators.required,Validators.pattern(/01[^012][0-9]{8}/)]],
 
-        email: [this.initUser.email, [Validators.required]]
+        email: [this.initUser.email, [Validators.required,Validators.pattern(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,8}/)]]
       }
     )
 
