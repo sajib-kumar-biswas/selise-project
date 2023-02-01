@@ -45,3 +45,14 @@ table {
 a{
     text-decoration: none;
 }
+
+.createBtn {
+    padding: 5px;
+    margin-right: 5px;
+    color: green;
+}
+
+.deleteBtn {
+    padding: 5px;
+    color: red;
+}
