@@ -1,44 +1,116 @@
 <div class="formContainer">
     <form (ngSubmit)="onSubmit()" class="form" [formGroup]="userForm">
+        <!-- first name field -->
         <mat-form-field appearance="fill">
             <mat-label>First Name </mat-label>
             <input formControlName="firstName" matInput />
         </mat-form-field>
 
+        <!-- first name field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['firstName'].invalid && (userForm.controls['firstName'].dirty || userForm.controls['firstName'].touched)">
+            <span *ngIf="userForm.controls['firstName'].hasError('required')">
+                First Name can not be blank.
+            </span>
+            <span *ngIf="userForm.controls['firstName'].hasError('minlength')">
+                First Name should be atleast 2 characters
+            </span>
+            <span *ngIf="userForm.controls['firstName'].hasError('maxlength')">
+                First Name should be less than or equal 50 characters
+            </span>
+        </mat-hint>
+
+        <!-- last name field -->
         <mat-form-field appearance="fill">
             <mat-label>Last Name </mat-label>
             <input formControlName="lastName" matInput />
         </mat-form-field>
 
+        <!-- last name field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['lastName'].invalid && (userForm.controls['lastName'].dirty || userForm.controls['lastName'].touched)">
+            <span *ngIf="userForm.controls['lastName'].hasError('required')">
+                Last Name can not be blank.
+            </span>
+            <span *ngIf="userForm.controls['lastName'].hasError('minlength')">
+                Last Name should be atleast 2 characters
+            </span>
+            <span *ngIf="userForm.controls['lastName'].hasError('maxlength')">
+                Last Name should be less than or equal 50 characters
+            </span>
+        </mat-hint>
+
+        <!-- Gender field -->
         <mat-radio-group formControlName="gender" aria-label="Select an option">
             <mat-label>Gender</mat-label>
             <mat-radio-button value="male">Male</mat-radio-button>
             <mat-radio-button value="female">Female</mat-radio-button>
         </mat-radio-group>
 
+        <!-- gender field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['gender'].invalid && (userForm.controls['gender'].dirty || userForm.controls['gender'].touched)">
+            <span *ngIf="userForm.controls['gender'].hasError('required')">
+                must be filled up.
+            </span>
+        </mat-hint>
+
+        <!-- Date of Bith field -->
         <mat-form-field appearance="fill">
             <mat-label>Date Of Birth</mat-label>
-            <input type="date" formControlName="dateOfBirth" matInput >
-
+            <input [min]="this.mindate" [max]="this.maxdate" [matDatepicker]="picker"
+                formControlName="dateOfBirth" matInput>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+
+        <!-- date of birth field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['dateOfBirth'].invalid && (userForm.controls['dateOfBirth'].dirty || userForm.controls['dateOfBirth'].touched)">
+            <span *ngIf="userForm.controls['dateOfBirth'].hasError('required')">
+                Can not be blank.
+            </span>
+        </mat-hint>
 
         <mat-form-field appearance="fill">
             <mat-label>City </mat-label>
             <input formControlName="city" matInput />
         </mat-form-field>
 
+        <!-- Phone field -->
         <mat-form-field appearance="fill">
             <mat-label>Phone </mat-label>
             <input formControlName="phone" matInput type="" />
         </mat-form-field>
 
+        <!-- Phone field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['phone'].invalid && (userForm.controls['phone'].dirty || userForm.controls['phone'].touched)">
+            <span *ngIf="userForm.controls['phone'].hasError('required')">
+                Can not be blank.
+            </span>
+            <span *ngIf="userForm.controls['phone'].hasError('pattern')">
+                Invalid number
+            </span>
+        </mat-hint>
+
+        <!-- Email field -->
         <mat-form-field appearance="fill">
             <mat-label>Email </mat-label>
             <input formControlName="email" matInput type="email" />
         </mat-form-field>
 
+        <!-- Email field validation messages -->
+        <mat-hint
+            *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+            <span *ngIf="userForm.controls['email'].hasError('required')">
+                Can not be blank.
+            </span>
+        </mat-hint>
+
         <div>
-            <button (click)="onCancel()"  mat-flat-button color="warn">Cancel</button>
+            <button (click)="onCancel()" mat-flat-button color="warn">Cancel</button>
             <button type="submit" mat-flat-button color="primary">Save</button>
         </div>
 
